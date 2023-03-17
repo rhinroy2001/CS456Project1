@@ -7,6 +7,7 @@ import java.util.ListIterator;
 
 public class HashTable {
     int slots;
+    int size;
     LinkedList[] hashTable;
 
     public HashTable(int slots){
@@ -15,6 +16,10 @@ public class HashTable {
         for(int i = 0; i < slots; i++){
             hashTable[i] = new LinkedList<Node>();
         }
+    }
+
+    public int size(){
+        return size;
     }
 
     // adds a node to the hash table
@@ -34,6 +39,7 @@ public class HashTable {
         if(!found){
             character.increaseOccurrences();
             hashTable[key].add(character);
+            size++;
         }
     }
 

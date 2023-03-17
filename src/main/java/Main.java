@@ -45,14 +45,20 @@ public class Main {
             String word = fileReader.next();
             for(int i = 0; i < word.length(); i++){
                 ht.put(word.charAt(i)); // put each character in the hash table
-                if(!characterList.contains(word.charAt(i))) {
-                    characterList.add(word.charAt(i)); // put each unique character in the character list
-                }
+//                if(!characterList.contains(word.charAt(i))) {
+//                    characterList.add(word.charAt(i)); // put each unique character in the character list
+//                }
             }
         }
-        Node[] arr = new Node[characterList.size()];
-        for(int i = 0; i < arr.length; i++) {
-            arr[i] = ht.find(characterList.get(i)); // add nodes to the node array
+        Node[] arr = new Node[ht.size()];
+        int i = 0;
+        for(LinkedList<Node> bucket: ht.hashTable) {
+            ListIterator<Node> bucketIterator = bucket.listIterator();
+            while(bucketIterator.hasNext()){
+                arr[i] = bucketIterator.next();
+                i++;
+            }
+            // arr[i] = ht.find(characterList.get(i)); // add nodes to the node array
         }
         fileReader.close();
         return arr;
