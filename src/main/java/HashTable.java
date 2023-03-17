@@ -17,6 +17,7 @@ public class HashTable {
         }
     }
 
+    // adds a node to the hash table
     public void put(char value){
         Node character = new Node(value);
         int key = Math.abs(character.hashCode()%slots);
@@ -36,6 +37,7 @@ public class HashTable {
         }
     }
 
+    // finds a node in the hash table
     public Node find(char value){
         Node character = new Node(value);
         int key = Math.abs(character.hashCode()%slots);
